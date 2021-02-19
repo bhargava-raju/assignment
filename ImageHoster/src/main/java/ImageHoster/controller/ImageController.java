@@ -150,7 +150,6 @@ public class ImageController {
     //Looks for a controller method with request mapping of type '/images'
     @RequestMapping(value = "/deleteImage", method = RequestMethod.DELETE)
     public String deleteImageSubmit(@RequestParam(name = "imageId") Integer imageId, HttpSession session, RedirectAttributes redirectAttrs, Model model) {
-        imageService.deleteImage(imageId);
         //Check if user was owner or not, Delete only if user was a owner.
         if (isImageOwner(imageId, session)) {
             imageService.deleteImage(imageId);
