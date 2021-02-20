@@ -59,7 +59,12 @@ public class UserController {
     }
 
     public static boolean passwordValidation(String password) {
-        return false;
+        // validationExpr is the regex pattern used to determine the strength of the password.
+        String[] validationExpr = {".*[a-zA-Z]+.*", // Character
+                ".*[0-9]+.*", // digits
+                ".*[!@#$%^&*(),.?:{}|<>]+.*"// symbols
+        };
+        return (password.matches(validationExpr[0]) && (password.matches(validationExpr[1]) && password.matches(validationExpr[2])));
     }
 
     //This controller method is called when the request pattern is of type 'users/login'
